@@ -16,105 +16,31 @@
 % 	      长标题 \title{{第一行}{第二行}}
 %             超长标题\tiitle{{第一行}{...}{第N行}}
 
-\title{{中国分析}{哲学研究}}
+% 实验名称
+\title{{作业1：全连接神经网络函数拟合}}
 
-
-
-% 标题样式 使用 \entitle{{}}; 使用时必须保证至少两个外侧括号
-%  如： 短标题 \entitle{{First row}},  
-% 	      长标题 \entitle{{First row}{ Second row}}
-%             超长标题\entitle{{First row}{...}{ Next N row}}
-% 注意：  英文标题多行时 需要在开头加个空格 防止摘要标题处英语单词粘连。
-\entitle{{Studies in Analytic }{Philosophy in China}}
-
+% 学生姓名
 \author{yuhldr}
+
+% 专业名称
 \major{理论物理}
+
+% 指导老师
 \advisor{兰朵儿}
+
+% 学院名称
 \college{物理科学与技术学院}
+
+% 年级或学号
 \grade{2016级}
 
+% 实验日期
+\date{2025年4月4日}
 
-
+% 生成封面
 \maketitle
 
-%==============================%
-% ↓ ↓ ↓ 诚信说明页 授权说明书
-%==============================%
-
-% 1. 可以调整签字的宽度，现在是40
-% 2. 去掉raisebox的相关注释(注意上下大括号对应)，可以改变-5那个数字调整签名和横线的上下位置
-
-% 你的签名，signature.pdf 改为你的签名文件名，
-\mysignature{
-    % \raisebox{-5pt}{
-    \includegraphics[width=40pt]{signature.pdf}
-    % }
-}
-% 你手写的日期，signature.pdf 改为你的手写的日期文件名
-\mytime{
-    % \raisebox{-5pt}{
-    \includegraphics[width=40pt]{signature.pdf}
-    % }
-}
-% 老师的手写签名，signature.pdf 改为老师的手写签名文件名
-\supervisorsignature{
-    % \raisebox{-5pt}{
-    \includegraphics[width=40pt]{signature.pdf}
-    % }
-}
-% 老师手写的时间，signature.pdf 改为老师的手写的日期文件名
-\teachertime{
-    % \raisebox{-5pSt}{
-    \includegraphics[width=40pt]{signature.pdf}
-    % }
-}
-% 老师手写的成绩
-\recommendedgrade{
-    % \raisebox{-5pt}{
-    \includegraphics[width=40pt]{signature.pdf}
-    % }
-}
-
-\makestatement
-
-%==============================%
-% ↑ ↑ ↑ 诚信说明页 授权说明书
-%==============================%
-
-
-%=====%
-%论文（设计）成绩：注意2007的模板要求，成绩页在最后，2021要求成绩页在摘要前面
-%=====%
-
-% 下面这些注释掉可以去掉成绩、评语什么的
-\supervisorcomment{导师评价你人很好}
-
-
-\committeecomment{优秀}
-
-\finalgrade{100}
-% 上面这些注释掉可以去掉成绩、评语什么的
-
-
-\frontmatter
-
-
-
-%中文摘要
-\ZhAbstract{注意，2021要求英文摘要在前面；这是真的在打广告啊，嗯，做兰大毕业论文latex模板时，顺便介绍一下我写的软件。嗯，好像本科生也不用打广告啦，目前两万多人在用，但是研究生没几个人在用啊，很多在写论文的你们马上就是兰州大学的研究生了吧，试一下兰朵儿？
-
-    不要仅仅把它当做广告，这里面有很多latex的用法说明}{兰朵儿，yuh}
-
-
-%英文摘要
-\EnAbstract{This essay explores the history of studies in analytical philosophy in China since the beginning of the last century, by dividing into three phases. It shows that, in these phases, analytic philosophy was always at a disadvantage in confronting serious challenges coming from both Chinese traditional philosophy and modern philosophical trends. The authors argue that Chinese philosophers have both done preliminary studies and offered their own analyses of various problems as well as some new applications of analytic philosophy especially in the latest period. Meanwhile, Chinese traditional philosophy was always trying to adjust its cultural mentality in the struggle with analytic philosophy, and accommodated in its own way the rationalistic spirit and scientific method represented in analytic philosophy.}
-{analytical philosophy; Chinese philosophers; philosophical analysis;
-    dialogue in philosophy.
-}
-
 %生成目录
-% \tableofcontents
-% 下面这个包含图表目录
 \customcontent
 
 
@@ -542,15 +468,5 @@ matlab代码有专门的库，但是没必要高亮太多，而且中文适配�
 这里是附录页，附上你的程序或必要的相关知识
 
 {\bfseries 编译方式:} xelatex --> biber --> xelatex--> xelatex，注意命令后面不包含.tex，而是直接 xelatex template 和 biber template
-
-\Thanks
-
-这里是致谢页，你可以在这里致谢你的舍友，老师，朋友，或者我
-
-（我是谁？兰朵儿开发者：余航，致谢我，查重时一定会重复的，哈哈，开个玩笑，本科生论文不在查重范围，而且“毕业论文(设计)检测内容主要为毕业论文(设计)的主体部分”）。
-
-
-\Grade %这一句才是成绩页，上面是填写
-
 
 \end{document}
