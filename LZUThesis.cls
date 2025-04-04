@@ -118,26 +118,28 @@
 %代码风格设置
 %=======package
 \RequirePackage{listings}
-
+\setmonofont{consola.ttf}[
+    ItalicFont = consolai.ttf,
+    BoldFont = consolab.ttf,
+    BoldItalicFont = consolaz.ttf
+]
 \lstset{
-    breaklines=true, %对过长的代码自动换行
-    columns=fixed,
-    numbers=left,                                        % 在左侧显示行号
-    numberstyle=\tiny\color{gray},                       % 设定行号格式
-    frame=none,                                          % 不显示背景边框
-    backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
-    keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
-    numberstyle=\footnotesize\color{darkgray},
-    commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
-    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
-    showstringspaces=false,                              % 不显示字符串中的空格
-    language=tex,
-    alsolanguage=[ANSI]C, %可以添加很多个alsolanguage,如alsolanguage=matlab,alsolanguage=VHDL等
-    alsolanguage=python,
-    alsolanguage=java,
-    alsolanguage=XML,
-    alsolanguage=c++,
-    alsolanguage=matlab,
+    basicstyle=\ttfamily, % 设置字体族
+    breaklines=true, % 自动换行
+    backgroundcolor=\color[RGB]{245,245,245}, % 设置背景颜色为浅灰色
+    keywordstyle=\bfseries\color[RGB]{166,38,164}, % 设置关键字为粗体
+    emph={self}, % 指定强调词，如果有多个，用逗号隔开
+    emphstyle=\bfseries\color[RGB]{152,104,1}, % 强调词样式设置
+    commentstyle=\itshape\color[RGB]{160,161,167}, % 设置注释样式
+    stringstyle=\bfseries\color[RGB]{80,161,79}, % 设置字符串样式
+    columns=flexible,
+    numbers=left, % 显示行号在左边
+    numbersep=2em, % 设置行号的具体位置
+    numberstyle=\footnotesize, % 缩小行号
+    lineskip=0.5em, % 行间距调整
+    frame=single, % 边框
+    framesep=0.5em, % 设置代码与边框的距离
+    language=Python, % 默认语言
 }
 
 
@@ -232,23 +234,23 @@
         \thispagestyle{empty}
 
 
-        % 图表目录标题
-        \ctexset{
-            listfigurename = {图\quad 目\quad 录},
-            listtablename = {表\quad 目\quad 录}
-        }
+        % % 图表目录标题
+        % \ctexset{
+        %     listfigurename = {图\quad 目\quad 录},
+        %     listtablename = {表\quad 目\quad 录}
+        % }
 
-        % 插图目录
-        \clearpage
-        \renewcommand{\numberline}[1]{\figlabel~##1\hspace*{1em}}
-        \listoffigures
-        \thispagestyle{empty}
+        % % 插图目录
+        % \clearpage
+        % \renewcommand{\numberline}[1]{\figlabel~##1\hspace*{1em}}
+        % \listoffigures
+        % \thispagestyle{empty}
 
-        % 表格目录
-        \clearpage
-        \renewcommand{\numberline}[1]{\tbllabel~##1\hspace*{1em}}
-        \listoftables
-        \thispagestyle{empty}
+        % % 表格目录
+        % \clearpage
+        % \renewcommand{\numberline}[1]{\tbllabel~##1\hspace*{1em}}
+        % \listoftables
+        % \thispagestyle{empty}
     }
 
 }
@@ -282,7 +284,7 @@
 
 \fancypagestyle{mainmatterstyle}{
     \fancyhf{}
-    \lhead{\zihao{-5}兰州大学本科毕业论文}%
+    \lhead{\zihao{-5}《机器学习》课程作业报告}%
     \rhead{\zihao{-5}\@title}
     % Footers
     \fancyfoot{} % clear all footer fields
@@ -333,6 +335,8 @@
 % 2.学生姓名、指导教师、学院、专业、年级字体为宋体，三号。
 %
 %%=======information
+\newtoks\authora
+\newtoks\authorb
 \newtoks\advisor
 \newtoks\college
 \newtoks\major
@@ -362,7 +366,7 @@
         \includegraphics[width=6cm]{lzu2020.png}\\
         \vspace*{21.8pt}
 
-        {\zihao{1}\bfseries\songti{本科毕业论文\\}}% 封面这几个字，规范中未提及，此处按照宋体
+        {\zihao{1}\bfseries\songti{《机器学习》课程作业报告\\}}% 封面这几个字，规范中未提及，此处按照宋体
         \vspace{21.8pt}
         \par
         \zihao{4}
@@ -372,39 +376,33 @@
         \vspace*{60pt}
 
         \begin{tabular}{ll}
-            \songti\bfseries \zihao{3} 论文题目（中文）% “论文题目（中文）”这几个字，应该是加粗（宋体加粗）
+            \songti\bfseries \zihao{3} 报告题目% “论文题目（中文）”这几个字，应该是加粗（宋体加粗）
             \forloop{title_str_number}{1}{\value{title_str_number}<6}{%
                 \StrFindGroup{\@title}{\value{title_str_number}}[\mygroup]%
                 \IfStrEq{\mygroup}{}{}{%
              & {\StrFindGroup{\@title}{\value{title_str_number}}[\mygroup]\LZUunderline[320pt]{ \songti \zihao{3}\mygroup}} \\[0.40cm]%
                 }%
             }%
-            \songti\bfseries  \zihao{3} 论文题目（英文）% “论文题目（英文）”这几个字，应该是加粗（宋体加粗）
-            \forloop{title_str_number}{1}{\value{title_str_number}<6}{%
-                \StrFindGroup{\the\entitle}{\value{title_str_number}}[\mygroup]%
-                \IfStrEq{\mygroup}{}{}{%
-             & {\StrFindGroup{\the\entitle}{\value{title_str_number}}[\mygroup]\LZUunderline[320pt]{\zihao{3}\mygroup}}     \\[0.40cm]%
-                }%
-            }%
         \end{tabular}
 
-        \vspace*{60pt}
+        \vspace*{160pt}
 
         \begin{tabular}{cc}
             {\songti \zihao{3}{学生姓名}}       &
-            {\LZUunderline[180pt]{ \songti \zihao{3}\@author}}       \\[0.40cm]
+            {\LZUunderline[300pt]{ \songti \zihao{3} \@author}}  \\[0.40cm]
             {\songti \zihao{3}{指导教师}}       &
-            {\LZUunderline[180pt]{ \songti \zihao{3}  \the\advisor}} \\[0.40cm]
+            {\LZUunderline[300pt]{ \songti \zihao{3}  \the\advisor}} \\[0.40cm]
             {\songti \zihao{3}{学\qquad 院}}  &
-            {\LZUunderline[180pt]{ \songti  \zihao{3} \the\college}} \\[0.40cm]
+            {\LZUunderline[300pt]{ \songti  \zihao{3} \the\college}} \\[0.40cm]
             {\songti \zihao{3} {专\hfill 业}} &
-            {\LZUunderline[180pt]{ \songti  \zihao{3} \the\major}}   \\[0.40cm]
+            {\LZUunderline[300pt]{ \songti  \zihao{3} \the\major}}   \\[0.40cm]
             {\songti \zihao{3}{年\qquad 级}}  &
-            {\LZUunderline[180pt]{ \songti \zihao{3}  \the\grade}}   \\[0.40cm]
+            {\LZUunderline[300pt]{ \songti \zihao{3}  \the\grade}}   \\[0.40cm]
+            {\songti \zihao{3}{报告日期}} &
+            {\LZUunderline[300pt]{ \songti \zihao{3} \@date}}        \\[0.40cm]
         \end{tabular}
         \par
         \vspace{40pt}
-        {\ziju{0}\zihao{3} \heiti{兰州大学教务处}}
     \end{center}
     \clearpage
 }
@@ -645,7 +643,7 @@
     \hypersetup{
         pdftitle = {\@title},
         pdfauthor = {\@author},
-        pdfsubject = {兰州大学本科毕业论文}
+        pdfsubject = {《机器学习》课程作业报告}
     }
 }
 
